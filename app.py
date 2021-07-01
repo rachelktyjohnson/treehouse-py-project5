@@ -1,6 +1,9 @@
 from flask import (render_template, request, redirect, url_for)
 from models import db, Project, app
 
+# load up the existing 4 projects
+
+
 
 @app.route('/')
 def index():
