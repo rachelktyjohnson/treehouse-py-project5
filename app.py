@@ -4,27 +4,27 @@ from models import db, Project, app
 
 @app.route('/')
 def index():
-    return "Home Page"
+    return render_template('index.html')
 
 
 @app.route('/about')
 def about():
-    return "About Page"
+    return render_template('about.html')
 
 
 @app.route('/projects/new')
 def project_new():
-    return "New Project Page"
+    return render_template('projectform.html')
 
 
 @app.route('/projects/<project_id>')
 def project_view(project_id):
-    return "Specific Project Page"
+    return render_template('detail.html')
 
 
 @app.route('/projects/<project_id>/edit')
 def project_edit(project_id):
-    return "Edit Specific Project Page"
+    return render_template('projectform.html')
 
 
 @app.route("/projects/<project_id>/delete")
@@ -33,7 +33,7 @@ def project_delete(project_id):
 
 
 @app.errorhandler(404)
-def not_found():
+def not_found(error):
     return "404 page"
 
 
