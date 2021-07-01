@@ -16,7 +16,7 @@
 <section class="navigation">
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ url_for('index') }}">Student Name</a>
+            <a class="navbar-brand" href="{{ url_for('index') }}">Rachel Johnson</a>
             <button class="toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
                     aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
@@ -39,7 +39,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             {% for project in projects %}
-                            <li><a class="dropdown-item" href="{{ url_for('project_view', project_id=project.id) }}">{{ project.title }}</a></li>
+                            <li><a class="dropdown-item" href="#project{{ project.id }}">{{ project.title }}</a></li>
                             {% endfor %}
                         </ul>
                     </li>
@@ -60,20 +60,11 @@
     <div class="socials">
         <!--Delete any you don't use-->
         <!--Icons from FontAwesome.com/icons-->
-        <a href="">
-            <i class="fab fa-twitter"></i>
-        </a>
-        <a href="">
+        <a href="https://github.com/rachelktyjohnson">
             <i class="fab fa-github"></i>
         </a>
-        <a href="">
+        <a href="https://www.linkedin.com/in/rachelktyjohnson/">
             <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="">
-            <i class="fab fa-instagram"></i>
-        </a>
-        <a href="">
-            <i class="fab fa-tiktok"></i>
         </a>
     </div>
     <div class="treehouse">
