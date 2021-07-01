@@ -1,8 +1,11 @@
 from flask import (render_template, request, redirect, url_for)
 from models import db, Project, app
 
-# load up the existing 4 projects
 
+@app.context_processor
+def inject_projects():
+    projects = Project.query.all()
+    return dict(projects=projects)
 
 
 @app.route('/')

@@ -10,7 +10,7 @@ db = SQLAlchemy(app)
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column('Title', db.String())
-    date = db.Column('Date', db.DateTime)
+    date = db.Column('Date', db.Date)
     description = db.Column('Description', db.Text)
     skills = db.Column('Skills', db.Text)
     repo = db.Column('Repo', db.Text)
