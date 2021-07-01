@@ -1,6 +1,15 @@
 # Treehouse Python Techdegree Project 5
 ## Portfolio with SQLAlchemy
 
-Create an interface for a portfolio web application. The main (index) page lists your projects including the project title and short description. Each project links to a detail page that displays the title, date, and description.
+### Project Description
+This is a portfolio web application! The app lets the user add projects or edit the projects in their portfolio. These are all stored in a SQLite database. 
 
-The application lets the user add or edit project information. When adding or editing a project, the application prompts the user for title, date, skills, description, and a link to a repo. The results for these entries are stored in a database and displayed on the homepage. The HTML/CSS for this site has been supplied for you.
+The HTML and CSS files were supplied by Treehouse.
+
+### What I learned
+- How to use Python for web development, which is exactly what I wanted to learn!
+- How to use Python and SQLite together (Flask, SQLAlchemy, Flask-SQLAlchemy)
+- How to best store portfolio-related data in a database that is clean and easy to access
+- Using Python within template files (Jinja!) to use dynamic data
+- How to use Flask to create different routes to send site visitors in the right direction (including 404 pages)
+- Using PEP8 Guidelines to the fullest to keep my code beautiful!
