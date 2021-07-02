@@ -70,7 +70,7 @@ def project_delete(project_id):
 
 @app.errorhandler(404)
 def not_found(error):
-    return "404 page"
+    return render_template('404.html')
 
 
 if __name__ == '__main__':
