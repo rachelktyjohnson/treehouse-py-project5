@@ -19,8 +19,21 @@ def about():
     return render_template('about.html')
 
 
-@app.route('/projects/new')
+@app.route('/projects/new', methods=['GET', 'POST'])
 def project_new():
+    if request.form:
+        year = request.form['date'][0:4]
+        month = request.form['date'][5:7]
+        new_project = Project(
+            title=request.form['title'],
+            date=datetime.datetime.strptime(f'{year}/{month}/01', '%Y/%m/%d'),
+            description=request.form['desc'],
+            skills=request.form['skills'],
+            repo=request.form['github']
+        )
+        db.session.add(new_project)
+        db.session.commit()
+        return redirect(url_for('project_view', project_id=new_project.id))
     return render_template('project_add.html')
 
 
@@ -49,7 +62,10 @@ def project_edit(project_id):
 
 @app.route("/projects/<project_id>/delete")
 def project_delete(project_id):
-    return "Delete Specific Project Page"
+    project = Project.query.get_or_404(project_id)
+    db.session.delete(project)
+    db.session.commit()
+    return redirect(url_for('index'))
 
 
 @app.errorhandler(404)
