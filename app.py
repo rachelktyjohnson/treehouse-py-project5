@@ -25,7 +25,10 @@ def project_new():
 
 @app.route('/projects/<project_id>')
 def project_view(project_id):
-    return render_template('detail.html')
+    project = Project.query.get_or_404(project_id)
+    project.skills_list = project.skills.split(',')
+
+    return render_template('detail.html', project=project)
 
 
 @app.route('/projects/<project_id>/edit')
