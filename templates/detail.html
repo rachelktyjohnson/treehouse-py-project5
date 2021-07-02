@@ -5,7 +5,7 @@
 {% block content %}
     <section class="header">
         <h1>{{ project.title }}</h1>
-        <p>{{ project.date.strftime("%m/%d/%Y") }}</p>
+        <p>{{ project.date.strftime("%B %Y") }}</p>
         <a target="_blank" href="{{project.repo}}" class="github-btn">
             <i class="fab fa-github"></i>
             View on GitHub
@@ -27,7 +27,7 @@
         <div id="triangle6"></div>
     </section>
     <section id="edit-delete">
-        <a href="#">
+        <a href="{{ url_for('project_edit', project_id=project.id) }}">
             <i class="fas fa-edit"></i>
             Edit
         </a>

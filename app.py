@@ -1,5 +1,6 @@
 from flask import (render_template, request, redirect, url_for)
 from models import db, Project, app
+import datetime
 
 
 @app.context_processor
@@ -20,20 +21,30 @@ def about():
 
 @app.route('/projects/new')
 def project_new():
-    return render_template('projectform.html')
+    return render_template('project_add.html')
 
 
 @app.route('/projects/<project_id>')
 def project_view(project_id):
     project = Project.query.get_or_404(project_id)
     project.skills_list = project.skills.split(',')
-
     return render_template('detail.html', project=project)
 
 
-@app.route('/projects/<project_id>/edit')
+@app.route('/projects/<project_id>/edit', methods=['GET', 'POST'])
 def project_edit(project_id):
-    return render_template('projectform.html')
+    project = Project.query.get_or_404(project_id)
+    if request.form:
+        project.title = request.form['title']
+        year = request.form['date'][0:4]
+        month = request.form['date'][5:7]
+        project.date = datetime.datetime.strptime(f'{year}/{month}/01', '%Y/%m/%d')
+        project.description = request.form['desc']
+        project.skills = request.form['skills']
+        project.repo = request.form['github']
+        db.session.commit()
+        return redirect(url_for('project_view', project_id=project.id))
+    return render_template('project_edit.html', project=project)
 
 
 @app.route("/projects/<project_id>/delete")
